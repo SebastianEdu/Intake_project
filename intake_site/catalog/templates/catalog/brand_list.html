@@ -1,0 +1,20 @@
+{ extends "index.html" %}
+
+{% load static %}
+	<h1> Lista de Vehiculos </h1>
+
+	{% if brand_list %}
+    <ul>
+
+      {% for brand in brand_list %}
+      <li>
+        <a href="{{ brand.get_absolute_url }}">{{ brand.brand_name }}</a>  
+        
+      </li>
+      {% endfor %}
+
+    </ul>
+
+    {% else %}
+      <p>TNo hay Fabricantes diponibles en este momento....</p>
+    {% endif %}       

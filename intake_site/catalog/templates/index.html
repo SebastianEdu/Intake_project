@@ -1,0 +1,681 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Intake Fabricantes</title>
+
+  <!-- Custom fonts for this theme -->
+  <link href="{% static 'vendor/fontawesome-free/css/all.min.css'%}" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+  <!-- Theme CSS -->
+  <link href="{% static 'css/freelancer.css'%}" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+  {% if user.is_authenticated %}
+  Hi {{ user.username }}!
+  <p><a href="{% url 'logout' %}">logout</a></p>
+  <p><a href="{% url 'password_reset' %}">reset password</a></p>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">Intake</a>
+      <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">Fabricantes y Modelos</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{% url 'login' %}">Vende tu Auto!</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{% url 'logged_out' %}">Cerrar sesion</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Masthead -->
+  <header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+
+      <!-- Masthead Avatar Image -->
+      <img class="masthead-avatar mb-5" src="{% static 'img/avataaars.svg'%}" alt="">
+
+      <!-- Masthead Heading -->
+      <h1 class="masthead-heading text-uppercase mb-0">Compra y venta Online!</h1>
+
+      <!-- Icon Divider -->
+      <div class="divider-custom divider-light">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon">
+          <i class="fas fa-star"></i>
+        </div>
+        <div class="divider-custom-line"></div>
+      </div>
+
+      <!-- Masthead Subheading -->
+      <p class="masthead-subheading font-weight-light mb-0">Elige una de las marcas disponibles, Elige tu modelo y registra tus datos para comprar, en este momento disponemos de </strong> {{ brands_available }} marcas y </strong> {{ cars_available }}</li> Automoviles disponibles </p>
+	   <p class="masthead-subheading font-weight-light mb-0">Tambien si vienes a publicar tu auto, ve a la seccion " VENDE TU AUTO" y espera nuestro contacto :D</p>
+
+    </div>
+  </header>
+
+  <!-- Portfolio Section -->
+  <section class="page-section portfolio" id="portfolio">
+    <div class="container">
+
+      <!-- Portfolio Section Heading -->
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0"><a href="{% url 'brands'%}">Listas de fabricantes</a></h2>
+
+      <!-- Icon Divider -->
+      <div class="divider-custom">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon">
+          
+		  <i class="fas fa-grip-horizontal"></i>
+        </div>
+        <div class="divider-custom-line"></div>
+      </div>
+
+      <!-- Portfolio Grid Items -->
+      <div class="row">
+
+        <!-- Portfolio Item 1 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
+            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+              <div class="portfolio-item-caption-content text-center text-white">
+                
+				<i class="fas fa-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="{% static 'img/marcas/mazda.jpg'%}" alt="">
+          </div>
+        </div>
+
+        <!-- Portfolio Item 2 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal2">
+            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+              <div class="portfolio-item-caption-content text-center text-white">
+                <i class="fas fa-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="{% static 'img/marcas/chevrolet.jpg'%}" alt="">
+          </div>
+        </div>
+
+        <!-- Portfolio Item 3 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal3">
+            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+              <div class="portfolio-item-caption-content text-center text-white">
+                <i class="fas fa-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="{% static 'img/marcas/toyota.jpg'%}" alt="">
+          </div>
+        </div>
+
+        <!-- Portfolio Item 4 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal4">
+            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+              <div class="portfolio-item-caption-content text-center text-white">
+                <i class="fas fa-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="{% static 'img/marcas/nissan.jpg'%}" alt="">
+          </div>
+        </div>
+
+        <!-- Portfolio Item 5 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal5">
+            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+              <div class="portfolio-item-caption-content text-center text-white">
+                <i class="fas fa-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="{% static 'img/marcas/mitsubishi.jpg'%}" alt="">
+          </div>
+        </div>
+
+        <!-- Portfolio Item 6 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal6">
+            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+              <div class="portfolio-item-caption-content text-center text-white">
+                <i class="fas fa-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="{% static 'img/marcas/subaru.jpg'%}" alt="">
+          </div>
+        </div>
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+  </section>
+
+   <section class="page-section portfolio" id="portfolio">
+    <div class="container">
+
+      <!-- Portfolio Section Heading -->
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0"><a href="{% url 'cars'%}">Listas de Vehiculos disponibles</a></h2>
+
+       <!-- Icon Divider -->
+      <div class="divider-custom">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon">
+          
+      <i class="fas fa-grip-horizontal"></i>
+        </div>
+        <div class="divider-custom-line"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="page-section bg-primary text-white mb-0" id="about">
+    <div class="container">
+
+      <!-- About Section Heading -->
+      <h2 class="page-section-heading text-center text-uppercase text-white">Vende tu Auto!</h2>
+
+      <!-- Icon Divider -->
+      <div class="divider-custom divider-light">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon">
+          <i class="far fa-handshake"></i>
+        </div>
+        <div class="divider-custom-line"></div>
+      </div>
+
+      <!-- About Section Content -->
+      <div class="row">
+        <div class="col-lg-4 ml-auto">
+          <p class="lead">Si tienes tu auto en excelentes condiciones envie su solicitud a traves de un formulario para ser inspeccionado por nuestro equipo de especialistas</p>
+        </div>
+        <div class="col-lg-4 mr-auto">
+          <p class="lead">Despues de el periodo de evaluacion de tu auto, si este pasa las condiciones de calidad del vehiculo, sera subido a Intake para su venta. Solo debes rellenar el formulario en el siguiente boton!</p>
+        </div>
+      </div>
+
+      <!-- About Section Button -->
+      <div class="text-center mt-4">
+        <a class="btn btn-xl btn-outline-light" href="#">
+          <i class="fas fa-pencil-alt"></i>
+          Formulario para venta!
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="page-section" id="contact">
+    <div class="container">
+
+      <!-- Contact Section Heading -->
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Contactanos!</h2>
+
+      <!-- Icon Divider -->
+      <div class="divider-custom">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon">
+          <i class="far fa-envelope fa-2x"></i>
+        </div>
+        <div class="divider-custom-line"></div>
+      </div>
+
+      <!-- Contact Section Form -->
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
+          <form name="sentMessage" id="contactForm" novalidate="novalidate">
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                <label>Nombre Completo</label>
+                <input class="form-control" id="name" type="text" placeholder="Ej: Homero Thompson" required="required" data-validation-required-message="Porfavor ingrese su nombre.">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                <label>Correo Electronico</label>
+                <input class="form-control" id="email" type="email" placeholder="Ej: Intake666@mail.com" required="required" data-validation-required-message="Porfavor ingrese su Correo Electronico.">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                <label>Numero Telefonico</label>
+                <input class="form-control" id="phone" type="tel" placeholder="Ej: +569 1111 2222" required="required" data-validation-required-message="Porfavor ingrese su numero telefonico.">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                <label>Escribenos lo que quieres saber!</label>
+                <textarea class="form-control" id="message" rows="5" placeholder="Ej: Hola!, Quiero saber..." required="required" data-validation-required-message="Porfavor ingrese su mensaje."></textarea>
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <br>
+            <div id="success"></div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">
+			  <i class="far fa-paper-plane"></i>
+			  Enviar</button>
+			  
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer text-center">
+    <div class="container">
+      <div class="row">
+
+        <!-- Footer Location -->
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h4 class="text-uppercase mb-4">Oficinas</h4>
+          <p class="lead mb-0"> Esquina Blanca 501, Maipú
+            <br>Santiago De Chile, Region Metropolitana, Chile </p>
+        </div>
+
+        <!-- Footer Social Icons -->
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h4 class="text-uppercase mb-4">Buscanos!</h4>
+          <a class="btn btn-outline-light btn-social mx-1" href="https://www.facebook.com/SportsCarEnthusiastsOfficial/">
+            <i class="fab fa-fw fa-facebook-f"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social mx-1" href="https://twitter.com/">
+            <i class="fab fa-fw fa-twitter"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social mx-1" href="https://www.instagram.com/explore/tags/jdm/">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social mx-1" href="https://www.youtube.com/watch?v=tN6RjbiCTt8">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+
+        <!-- Footer About Text -->
+        <div class="col-lg-4">
+          <h4 class="text-uppercase mb-4">Compra a traves de Intake</h4>
+          <p class="lead mb-0">Intake se encarga de asegurar tu compra siendo el intermediario dentre el comprador y el vendedor, validando los tratos y condiciones tanto del trato como de el auto.
+            
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- Copyright Section -->
+  <section class="copyright py-4 text-center text-white">
+    <div class="container">
+      <small>Copyright &copy; Intake Co 2019</small>
+    </div>
+  </section>
+
+  <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+  <div class="scroll-to-top d-lg-none position-fixed ">
+    <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+
+  <!-- Portfolio Modals -->
+
+  <!-- Portfolio Modal 1 -->
+  <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-labelledby="portfolioModal1Label" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">
+            <i class="fas fa-times"></i>
+          </span>
+        </button>
+        <div class="modal-body text-center">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-lg-8">
+                <!-- Portfolio Modal - Title -->
+                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Mazda</h2>
+                <!-- Icon Divider -->
+                <div class="divider-custom">
+                  <div class="divider-custom-line"></div>
+                  <div class="divider-custom-icon">
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <div class="divider-custom-line"></div>
+                </div>
+                <!-- Portfolio Modal - Image -->
+				<img class="img-fluid rounded-mb5" src="{% static 'img/cars/mazda/back.png'%}" alt="back_rx8">
+				<img class="img-fluid rounded-mb5" src="{% static 'img/cars/mazda/side.png'%}" alt="side_rx8">
+                <img class="img-fluid rounded-mb5" src="{% static 'img/cars/mazda/front.png'%}" alt="front_rx8">
+				 
+                <!-- Portfolio Modal - Text -->
+                <p class="mb-2">Modelo: RX8</p>
+				<p class="mb-2">Valor: $6.000.000</p>
+				<p class="mb-2">Categoria: Coupe 4 puertas (Suicide Doors)</p>
+				<p class="mb-2">Año: 2006</p>
+				<p class="mb-2">Motor: Rotativo</p>
+				<p class="mb-2">Cilindrada: 1.3 L</p>
+				<p class="mb-2">Traccion: Trasera</p>
+				<p class="mb-2">Transmision: Manual de 6 velocidades</p>
+				<p class="mb-2">Airbags: frontales, laterales, posteriores a la cabeza</p>
+				<p class="mb-2">Combustible: Gasolina</p>
+				<p class="mb-2">Kilometraje: 94.000 Kms.</p>
+                <button class="btn btn-primary" href="#" data-dismiss="modal">
+                 
+				  <i class="far fa-address-card"></i>
+                  Formulario / Comprar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Portfolio Modal 2 -->
+  <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-labelledby="portfolioModal2Label" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">
+            <i class="fas fa-times"></i>
+          </span>
+        </button>
+        <div class="modal-body text-center">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-lg-8">
+                <!-- Portfolio Modal - Title -->
+                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Chevrolet</h2>
+                <!-- Icon Divider -->
+                <div class="divider-custom">
+                  <div class="divider-custom-line"></div>
+                  <div class="divider-custom-icon">
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <div class="divider-custom-line"></div>
+                </div>
+                <!-- Portfolio Modal - Image -->
+                <img class="img-fluid rounded-mb5" src="{% static 'img/cars/chevrolet/back.webp'%}" alt="back_silverado">
+				<img class="img-fluid rounded-mb5" src="{% static 'img/cars/chevrolet/side.png'%}" alt="side_silverado">
+                <img class="img-fluid rounded-mb5" src="{% static 'img/cars/chevrolet/front.png'%}" alt="front_silverado">
+                <!-- Portfolio Modal - Text -->
+                <p class="mb-2">Modelo: Silverado</p>
+				<p class="mb-2">Valor: $16.690.000</p>
+				<p class="mb-2">Categoria: Camioneta 4 puertas</p>
+				<p class="mb-2">Año: 2014</p>
+				<p class="mb-2">Motor: V8</p>
+				<p class="mb-2">Cilindrada: 5.3 L</p>
+				<p class="mb-2">Traccion: Total (4WD)</p>
+				<p class="mb-2">Transmision: Automatica de 6 velocidades</p>
+				<p class="mb-2">Airbags: frontales, laterales, Censor de volcamiento</p>
+				<p class="mb-2">Combustible: Gasolina</p>
+				<p class="mb-2">Kilometraje: 52.000 Kms.</p>
+                <button class="btn btn-primary" href="#" data-dismiss="modal">
+                  <i class="far fa-address-card"></i>
+                  Formulario / Comprar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Portfolio Modal 3 -->
+  <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-labelledby="portfolioModal3Label" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">
+            <i class="fas fa-times"></i>
+          </span>
+        </button>
+        <div class="modal-body text-center">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-lg-8">
+                <!-- Portfolio Modal - Title -->
+                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Toyota</h2>
+                <!-- Icon Divider -->
+                <div class="divider-custom">
+                  <div class="divider-custom-line"></div>
+                  <div class="divider-custom-icon">
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <div class="divider-custom-line"></div>
+                </div>
+                <!-- Portfolio Modal - Image -->
+                <img class="img-fluid rounded-mb5" src="{% static 'img/cars/toyota/back.png'%}" alt="back_yaris">
+				<img class="img-fluid rounded-mb5" src="{% static 'img/cars/toyota/side.png'%}" alt="side_yaris">
+                <img class="img-fluid rounded-mb5" src="{% static 'img/cars/toyota/front.png'%}" alt="front_yaris">
+                <!-- Portfolio Modal - Text -->
+                 <p class="mb-2">Modelo: Yaris sport (Hatchback)</p>
+				<p class="mb-2">Valor: $7.590.000</p>
+				<p class="mb-2">Categoria: Compacto 5 puertas</p>
+				<p class="mb-2">Año: 2017</p>
+				<p class="mb-2">Motor: 4 Cilindros</p>
+				<p class="mb-2">Cilindrada: 1.5 L</p>
+				<p class="mb-2">Traccion: Delantera</p>
+				<p class="mb-2">Transmision: Manual de 5 velocidades</p>
+				<p class="mb-2">Airbags: frontales</p>
+				<p class="mb-2">Combustible: Gasolina</p>
+				<p class="mb-2">Kilometraje: 43.000 Kms.</p>
+                <button class="btn btn-primary" href="#" data-dismiss="modal">
+                  <i class="far fa-address-card"></i>
+                  Formulario / Comprar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Portfolio Modal 4 -->
+  <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-labelledby="portfolioModal4Label" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">
+            <i class="fas fa-times"></i>
+          </span>
+        </button>
+        <div class="modal-body text-center">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-lg-8">
+                <!-- Portfolio Modal - Title -->
+                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Nissan</h2>
+                <!-- Icon Divider -->
+                <div class="divider-custom">
+                  <div class="divider-custom-line"></div>
+                  <div class="divider-custom-icon">
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <div class="divider-custom-line"></div>
+                </div>
+                <!-- Portfolio Modal - Image -->
+                <img class="img-fluid rounded-mb5" src="{% static 'img/cars/nissan/back.png'%}" alt="back_350z_roadster">
+				<img class="img-fluid rounded-mb5" src="{% static 'img/cars/nissan/side.webp'%}" alt="side_350z_roadster">
+                <img class="img-fluid rounded-mb5" src="{% static 'img/cars/nissan/front.webp'%}" alt="front_350z_roadster">
+                <!-- Portfolio Modal - Text -->
+                <p class="mb-2">Modelo: 350z Roadster</p>
+				<p class="mb-2">Valor: $9.000.000</p>
+				<p class="mb-2">Categoria: Coupe descapotable 2 puertas (bi-plaza)</p>
+				<p class="mb-2">Año: 2008</p>
+				<p class="mb-2">Motor: V6</p>
+				<p class="mb-2">Cilindrada: 3.5 L</p>
+				<p class="mb-2">Traccion: Trasera</p>
+				<p class="mb-2">Transmision: Manual de 6 velocidades</p>
+				<p class="mb-2">Airbags: frontales</p>
+				<p class="mb-2">Combustible: Gasolina</p>
+				<p class="mb-2">Kilometraje: 93.000 Kms.</p>
+                <button class="btn btn-primary" href="#" data-dismiss="modal">
+                  <i class="far fa-address-card"></i>
+                  Formulario / comprar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Portfolio Modal 5 -->
+  <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-labelledby="portfolioModal5Label" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">
+            <i class="fas fa-times"></i>
+          </span>
+        </button>
+        <div class="modal-body text-center">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-lg-8">
+                <!-- Portfolio Modal - Title -->
+                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Mitsubishi Motors</h2>
+                <!-- Icon Divider -->
+                <div class="divider-custom">
+                  <div class="divider-custom-line"></div>
+                  <div class="divider-custom-icon">
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <div class="divider-custom-line"></div>
+                </div>
+                <!-- Portfolio Modal - Image -->
+                <img class="img-fluid rounded-mb5" src="{% static 'img/cars/mitsubishi/back.webp'%}" alt="back_lancer">
+				<img class="img-fluid rounded-mb5" src="{% static 'img/cars/mitsubishi/side.png'%}" alt="side_lancer">
+                <img class="img-fluid rounded-mb5" src="{% static 'img/cars/mitsubishi/front.webp'%}" alt="front_lancer">
+                <!-- Portfolio Modal - Text -->
+                <p class="mb-2">Modelo: Lancer R/T</p>
+				<p class="mb-2">Valor: $5.200.000</p>
+				<p class="mb-2">Categoria: Sedan 4 Puertas</p>
+				<p class="mb-2">Año: 2008</p>
+				<p class="mb-2">Motor: 4 cilindros</p>
+				<p class="mb-2">Cilindrada: 1.5 L</p>
+				<p class="mb-2">Traccion: Delantera</p>
+				<p class="mb-2">Transmision: Manual de 5 velocidades</p>
+				<p class="mb-2">Airbags: frontales</p>
+				<p class="mb-2">Combustible: Gasolina</p>
+				<p class="mb-2">Kilometraje: 143.000 Kms.</p>
+                <button class="btn btn-primary" href="#" data-dismiss="modal">
+                  <i class="far fa-address-card"></i>
+                  Formulario / comprar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Portfolio Modal 6 -->
+  <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-labelledby="portfolioModal6Label" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">
+            <i class="fas fa-times"></i>
+          </span>
+        </button>
+        <div class="modal-body text-center">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-lg-8">
+                <!-- Portfolio Modal - Title -->
+                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Subaru</h2>
+                <!-- Icon Divider -->
+                <div class="divider-custom">
+                  <div class="divider-custom-line"></div>
+                  <div class="divider-custom-icon">
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <div class="divider-custom-line"></div>
+                </div>
+                <!-- Portfolio Modal - Image -->
+                <img class="img-fluid rounded-mb5" src="{% static 'img/cars/subaru/back.webp'%}" alt="back_forester">
+				<img class="img-fluid rounded-mb5" src="{% static 'img/cars/subaru/side.webp'%}" alt="side_forester">
+                <img class="img-fluid rounded-mb5" src="{% static 'img/cars/subaru/front.webp'%}" alt="front_forester">
+                <!-- Portfolio Modal - Text -->
+                 <p class="mb-2">Modelo: Forester</p>
+				<p class="mb-2">Valor: $6.200.000</p>
+				<p class="mb-2">Categoria: SUV Todoterreno 4 puertas</p>
+				<p class="mb-2">Año: 2011</p>
+				<p class="mb-2">Motor: 4 cilindros BOXER</p>
+				<p class="mb-2">Cilindrada: 2.0 L</p>
+				<p class="mb-2">Traccion: 4x4 (AWD)</p>
+				<p class="mb-2">Transmision: Manual de 5 velocidades</p>
+				<p class="mb-2">Airbags: frontales, laterales</p>
+				<p class="mb-2">Combustible: Gasolina</p>
+				<p class="mb-2">Kilometraje: 100.000 Kms.</p>
+                <button class="btn btn-primary" href="#" data-dismiss="modal">
+                  <i class="far fa-address-card"></i>
+                  Formulario / Comprar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'vendor/jquery/jquery.min.js'%}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js'%}"></script>
+
+  <!-- Contact Form JavaScript -->
+  <script src="{% static 'js/jqBootstrapValidation.js'%}"></script>
+  <script src="{% static 'js/contact_me.js'%}"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="{% static 'js/freelancer.min.js'%}"></script>
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">login</a>
+{% endif %}
+</body>
+
+</html>

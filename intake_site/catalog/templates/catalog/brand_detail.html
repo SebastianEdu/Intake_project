@@ -1,0 +1,27 @@
+{extends "index.html" %}
+
+
+
+      
+{% block content %}
+
+<h1> Lista de Vehiculos de la marca <a href="{{ brand.get_absolute_url }}">{{ brand.brand_name }}</a></h1>
+
+<div style="margin-left:20px;margin-top:20px">
+<h4>Modelos</h4>
+
+
+    
+  {% for car in brand.car_set.all %}
+    <dt><a href="{% url 'car-detail' car.pk %}">{{car}}</a> </dt>
+    
+  
+
+  {% endfor %}
+
+
+</div>
+{% endblock %}
+
+
+     

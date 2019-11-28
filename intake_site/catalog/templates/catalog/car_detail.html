@@ -1,0 +1,18 @@
+{ extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Title: {{ car.car_model}}</h1>
+
+  <p><strong>Marca:</strong> <a href="{% url 'brands' %}">{{ car.car_brand }}</a></p> <!-- author detail link not yet defined -->
+  <p><strong>Modelo:</strong> {{ car.car_model }}</p>
+  <p><strong>Patente:</strong> {{ car.car_plate }}</p> 
+  <p><strong>Precio:</strong> {{ car.car_price }}</p>
+  <p><strong>Categoria:</strong> {{ car.car_category }}</p>
+  <p><strong>Año:</strong> {{ car.car_year }}</p>
+  <p><strong>Motor:</strong> {{ car.car_engine }}</p>
+  <p><strong>Cilindrada:</strong> {{ car.car_cilindrada }}</p>
+  <p><strong>Traccion:</strong> {{ car.car_drivetrain }}</p>  
+
+
+  
+{% endblock %}
